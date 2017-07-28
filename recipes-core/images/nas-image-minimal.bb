@@ -1,0 +1,1 @@
+include nas-image-minimal.inc
