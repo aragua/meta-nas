@@ -12,12 +12,12 @@ LIC_FILES_CHKSUM = "file://COPYING;md5=7ee657ac1dce0e7353033fc06c8087d2"
 
 REQUIRED_DISTRO_FEATURES = " libc-locale-code "
 # Upstream names releases after SVN revs
-PV = "r${SRCREV}"
+# PV = "r${SRCREV}"
 
-SRC_URI = "svn://svn.transmissionbt.com/Transmission/;protocol=svn;module=trunk \
+SRC_URI = "https://github.com/transmission/transmission-releases/raw/master/transmission-${PV}.tar.xz \
           file://settings.json"
 
-S = "${WORKDIR}/trunk"
+#S = "${WORKDIR}/git"
 
 SRC_URI =+ "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '', 'file://transmission-daemon', d)}"
 SRC_URI =+ "${@bb.utils.contains('DISTRO_FEATURES', 'meta-nas_busybox_send_email', 'file://send-email-transmission.sh', '', d)}"
@@ -30,6 +30,8 @@ PACKAGECONFIG = "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'gtk', '', d)} \
 
 PACKAGECONFIG[gtk] = " --with-gtk,--without-gtk,gtk+3,"
 PACKAGECONFIG[systemd] = "--with-systemd-daemon,--without-systemd-daemon,systemd,"
+
+EXTRA_OECONF = ""
 
 # Configure aborts with:
 # config.status: error: po/Makefile.in.in was not created by intltoolize.
