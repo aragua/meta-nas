@@ -1,0 +1,16 @@
+Index: git/Makefile.am
+===================================================================
+--- git.orig/Makefile.am
++++ git/Makefile.am
+@@ -15,11 +15,6 @@ AUTHORS:
+ 		     echo Failed to generate $@ >&2 ); \
+ 	else touch $@; fi
+ 
+-# Generate the ChangeLog.
+-@GENERATE_CHANGELOG_RULES@
+-dist-hook: dist-ChangeLog
+-
+-
+ GITIGNOREFILES = \
+ 	**/*.swp \
+ 	*.o \

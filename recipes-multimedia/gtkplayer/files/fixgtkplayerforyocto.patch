@@ -1,0 +1,29 @@
+Index: git/configure.ac
+===================================================================
+--- git.orig/configure.ac
++++ git/configure.ac
+@@ -40,14 +40,12 @@ dnl ************************************
+ AM_SILENT_RULES([yes])
+ AM_INIT_AUTOMAKE([1.11 foreign subdir-objects tar-ustar no-dist-gzip dist-xz -Wno-portability])
+ AM_MAINTAINER_MODE([enable])
+-AX_GENERATE_CHANGELOG
+ 
+ 
+ dnl ***********************************************************************
+ dnl Add extra debugging with --enable-debug and --enable-compile-warnings
+ dnl ***********************************************************************
+-AX_CHECK_ENABLE_DEBUG([no],[]
+-                      [G_DISABLE_ASSERT G_DISABLE_CHECKS G_DISABLE_CAST_CHECKS])
++dnl AX_CHECK_ENABLE_DEBUG([no],[][G_DISABLE_ASSERT G_DISABLE_CHECKS G_DISABLE_CAST_CHECKS])
+ 
+ 
+ dnl ***********************************************************************
+@@ -91,7 +89,7 @@ dnl                       [AC_MSG_ERROR(
+ dnl ***********************************************************************
+ dnl Check for required packages
+ dnl ***********************************************************************
+-GST_REQS=1.4.0
++GST_REQS=1.10.0
+ PKG_CHECK_MODULES(LIBGTKPLAYER,
+ 	[gio-2.0 >= 2.42
+ 	gtk+-3.0 >= 3.20
